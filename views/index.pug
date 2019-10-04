@@ -1,0 +1,11 @@
+doctype html
+html
+  head
+  body
+    h1 Trivia 
+    form(action='/question' method='post')
+      input(name='question' placeholder='Pregunta')
+      input(type='submit' value='Guardar')  
+    ul
+      each question in questions
+        li= question.question    
