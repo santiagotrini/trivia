@@ -2,10 +2,29 @@ doctype html
 html
   head
   body
-    h1 Trivia 
+    h1 Trivia
+    h4 Nueva pregunta 
     form(action='/question' method='post')
       input(name='question' placeholder='Pregunta')
-      input(type='submit' value='Guardar')  
-    ul
+      br  
+      input(name='answerA' placeholder='Respuesta A')
+      input(name='checkboxA' type='checkbox' value='true')
+      br
+      input(name='answerB' placeholder='Respuesta B')  
+      input(name='checkboxB' type='checkbox' value='true')
+      br
+      input(name='answerC' placeholder='Respuesta C')
+      input(name='checkboxC' type='checkbox' value='true')  
+      br
+      input(name='answerD' placeholder='Respuesta D')  
+      input(name='checkboxD' type='checkbox' value='true')
+      br
+      input(type='submit' value='Guardar')
+    br      
+    ol
       each question in questions
-        li= question.question    
+        li= question.title
+          ol(type='A')
+            each answer in question.answers
+              li= answer.title
+                input(type='radio' value=answer.title name='answer') 
