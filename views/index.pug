@@ -1,6 +1,8 @@
 doctype html
 html
   head
+    script(type='text/javascript' src='script.js')
+      
   body
     h1 Trivia
     h4 Nueva pregunta 
@@ -26,5 +28,6 @@ html
         li= question.title
           ol(type='A')
             each answer in question.answers
-              li= answer.title
-                input(type='radio' value=answer.title name='answer') 
+              li(id=answer._id) #{answer.title}
+                input(type='radio' id=answer._id name=question._id value=answer.isRight ? 'true' : 'false' onclick='chequearRespuesta(this)' rta=answer._id)
+                   

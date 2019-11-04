@@ -8,6 +8,7 @@ const db   = process.env.MONGODB_URI || 'mongodb://localhost/trivia';
 
 // objeto app
 const app = express();
+console.log(app);
 
 // conectarse a la base de datos
 mongoose.set('useFindAndModify', false);
@@ -37,6 +38,7 @@ const Answer = mongoose.model('Answer', AnswerSchema);
 // middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(express.static('public'));
 
 // config de vistas
 app.set('view engine', 'pug');

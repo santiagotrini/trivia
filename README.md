@@ -23,3 +23,8 @@ Ejercicio para Proyecto Informatico I.
 - [ ] Modificar el formulario de nueva pregunta para poder cargar las respuestas tambien.
 - [ ] Mostrar las preguntas con sus respuestas.
 - [ ] Mostrar cuando el jugador acierta o falla en una pregunta.
+- [ ] Agregar un formulario de registro para nuevos usuarios.
+- [ ] Agregar un formulario de _login_.
+- [ ] Agregar autenticacion usando PassportJS con usuario y contraseña.
+- [ ] Mantener un historial de preguntas acertadas y falladas por cada usuario.
+- [ ] Mostrar 10 preguntas al azar de la base de datos no respondidas al logearse un usuario, o mejor aun, al tocar un botón que diga jugar o algo por el estilo.
