@@ -1,10 +1,11 @@
-function chequearRespuesta(e) {
+function checkAnswer(e) {
   if (e.value == 'true') {
     console.log('bien');
-    e.style.backgroundColor = 'green';
+    let li = document.getElementById(e.id);
+    li.style.backgroundColor = 'paleGreen';
   } else {
     console.log('mal');
-    e.style.backgroundColor = 'red';
+    let li = document.getElementById(e.id);
+    li.style.backgroundColor = 'fireBrick';
   }
-
 }

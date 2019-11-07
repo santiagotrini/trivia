@@ -4,6 +4,21 @@ html
     script(type='text/javascript' src='script.js')
       
   body
+    if (!user)
+      h1 Login
+      form(action='/login' method='post')
+        input(name='username' placeholder='usuario')
+        br
+        input(name='password' type='password' placeholder='contraseña')
+        br
+        input(type='submit' value='Ingresar')
+      h3 No tenes usuario? 
+      a(href='/signup') Registrate
+            
+    else 
+      h1 Bienvenido #{user.username}   
+      a(href='/logout') Logout     
+                 
     h1 Trivia
     h4 Nueva pregunta 
     form(action='/question' method='post')
@@ -29,5 +44,5 @@ html
           ol(type='A')
             each answer in question.answers
               li(id=answer._id) #{answer.title}
-                input(type='radio' id=answer._id name=question._id value=answer.isRight ? 'true' : 'false' onclick='chequearRespuesta(this)' rta=answer._id)
+                input(type='radio' id=answer._id name=question._id value=answer.isRight ? 'true' : 'false' onclick='checkAnswer(this)' rta=answer._id)
                    
