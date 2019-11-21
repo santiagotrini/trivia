@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  main.inner.cover(role='main')
+    h1.cover-heading Crear usuario
+    form(action='/login' method='post')
+      div.form-group
+        input(name='username' type='text' placeholder='Nombre de usuario')
+      div.form-group  
+        input(name='password' type='password' placeholder='Contraseña')
+      div.form-group  
+        input(name='email' type='text' placeholder='Email')
+      div.form-group  
+        input(name='firstName' type='text' placeholder='Nombre')
+      div.form-group  
+        input(name='lastName' type='text' placeholder='Apellido')            
+      input.btn.btn-secondary.btn-lg(type='submit' value='Registrarse') 

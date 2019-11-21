@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  main.inner.cover(role='main')
+    h1.cover-heading Iniciar sesión
+    form(action='/login' method='post')
+      div.form-group
+        input(name='username' type='text' placeholder='Usuario')
+      div.form-group  
+        input(name='password' type='password' placeholder='Contraseña')
+      input.btn.btn-secondary.btn-lg(type='submit' value='Ingresar')     
+        
