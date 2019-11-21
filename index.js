@@ -146,10 +146,16 @@ app.post('/question', (req, res) => {
   });
 });
 
+/*
 app.get('/', (req, res) => {
   Question.find().populate('answers').exec((err, questions) => {
     res.render('index', { questions: questions, user: req.user });
   });
+});
+*/
+
+app.get('/', (req, res) => {
+  res.render('index');
 });
 
 // ruta para signup
@@ -169,6 +175,7 @@ app.post('/signup', (req, res, next) => {
       user.password = hash;
       user.save(err => {
         if (err) return next(err);
+        // res.status(201).json(user);
         res.redirect('/');
       });
     });

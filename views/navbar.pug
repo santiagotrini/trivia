@@ -1,0 +1,14 @@
+- // let user = { username: 'Juan' };
+- let user = null;
+- link2 = user ? `Crear pregunta` : 'Login';
+- link3 = user ? 'Logout' : 'Registrarse';
+
+header.masthead.mb-auto
+  div.inner  
+    h3.masthead-brand Trivia
+    nav.nav.nav-masthead.justify-content-center
+      a.nav-link.active(href='#') Home
+      if (user)
+        a.disabled.nav-link Bienvenido, #{user.username}
+      a.nav-link(href='#')= link2
+      a.nav-link(href='#')= link3

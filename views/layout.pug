@@ -1,0 +1,10 @@
+doctype html
+html(lang='es')
+  head
+    include head.pug
+  body.text-center
+    div.cover-container.d-flex.w-100.h-100.p-3.mx-auto.flex-column
+      include navbar.pug
+      block content
+      include footer.pug    
+      include scripts.pug    
