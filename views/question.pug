@@ -1,0 +1,31 @@
+extends layout
+
+block content
+  main.inner.cover(role='main')
+    h1.cover-heading Crear pregunta
+    form(action='/question' method='post')
+      div.form-group
+        input(name='question' placeholder='Pregunta')  
+      div.form-group
+        input(name='answerA' placeholder='Respuesta A')
+      div.form-group
+        input(name='answerB' placeholder='Respuesta B')  
+      div.form-group
+        input(name='answerC' placeholder='Respuesta C')  
+      div.form-group
+        input(name='answerD' placeholder='Respuesta D')
+      h3 Respuesta correcta
+      div.form-check.form-check-inline
+        input#a.form-check-input(type='radio' name='answers' value='a')
+        label.form-check-label(for='a') A
+      div.form-check.form-check-inline
+        input#b.form-check-input(type='radio' name='answers' value='b')
+        label.form-check-label(for='b') B
+      div.form-check.form-check-inline
+        input#c.form-check-input(type='radio' name='answers' value='c')
+        label.form-check-label(for='c') C
+      div.form-check.form-check-inline
+        input#d.form-check-input(type='radio' name='answers' value='d')
+        label.form-check-label(for='d') D      
+      div.form-group.mt-2    
+        input.btn.btn-lg.btn-secondary(type='submit' value='Guardar')

@@ -1,6 +1,11 @@
 const express = require('express');
-const router = express.Router();
 const passport = require('passport');
+const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
+const router = express.Router();
+const User = require('../models/User');
+const Question = require('../models/Question');
+const Answer = require('../models/Answer');
 
 // ruta para logearse
 router.post('/login',
@@ -26,6 +31,7 @@ router.post('/register', (req, res) => {
     lastName: req.body.lastName,
     email: req.body.email
   });
+  console.log(user) // debug
   bcrypt.genSalt(10, (err, salt) => {
     bcrypt.hash(user.password, salt, (err, hash) => {
       if (err) throw err;
@@ -35,6 +41,79 @@ router.post('/register', (req, res) => {
         res.redirect('/');
       });
     });
+  });
+});
+
+router.get('/unauthorized', (req, res) => {
+  res.render('unauthorized');
+});
+
+router.get('/play',
+  require('connect-ensure-login').ensureLoggedIn('/unauthorized'),
+  (req, res) => {
+    Question.find().populate('answers').limit(1).exec((err, question) => {
+      if (err) throw err;
+      res.render('play', { question: question[0], user: req.user });
+    });
+});
+
+router.get('/question',
+  require('connect-ensure-login').ensureLoggedIn('/unauthorized'),
+  (req, res) => {
+    res.render('question');
+});
+
+router.post('/question', (req, res) => {
+  const question = new Question({
+    _id: new mongoose.Types.ObjectId(),
+    title: req.body.question
+  });
+  const answerA = new Answer({
+    title: req.body.answerA,
+    isRight: false,
+    question: question._id
+  });
+  const answerB = new Answer({
+    title: req.body.answerB,
+    isRight: false,
+    question: question._id
+  });
+  const answerC = new Answer({
+    title: req.body.answerC,
+    isRight: false,
+    question: question._id
+  });
+  const answerD = new Answer({
+    title: req.body.answerD,
+    isRight: false,
+    question: question._id
+  });
+  switch (req.body.answers) {
+    case 'a':
+      answerA.isRight = true;
+      break;
+    case 'b':
+      answerB.isRight = true;
+      break;
+    case 'c':
+      answerC.isRight = true;
+      break;
+    case 'd':
+      answerD.isRight = true;
+      break;
+    default:
+      break;
+  }
+  question.answers.push(answerA);
+  question.answers.push(answerB);
+  question.answers.push(answerC);
+  question.answers.push(answerD);
+  question.save(err => {
+    answerA.save();
+    answerB.save();
+    answerC.save();
+    answerD.save();
+    res.redirect('/question');
   });
 });
 

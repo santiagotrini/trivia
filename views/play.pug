@@ -1,0 +1,9 @@
+extends layout
+
+block content
+  main.inner.cover(role='main')
+    h1.cover-heading.mb-5= question.title
+    each answer in question.answers
+      div.w-50.form-group.mx-auto.mt-3
+        button.btn.btn-lg.btn-secondary.btn-block= answer.title
+      
