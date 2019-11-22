@@ -51,16 +51,17 @@ router.get('/unauthorized', (req, res) => {
 router.get('/play',
   require('connect-ensure-login').ensureLoggedIn('/unauthorized'),
   (req, res) => {
-    Question.find().populate('answers').limit(1).exec((err, question) => {
+    Question.find().populate('answers').exec((err, questions) => {
       if (err) throw err;
-      res.render('play', { question: question[0], user: req.user });
+      const random = Math.floor(Math.random() * questions.length);
+      res.render('play', { question: questions[random], user: req.user });
     });
 });
 
 router.get('/question',
   require('connect-ensure-login').ensureLoggedIn('/unauthorized'),
   (req, res) => {
-    res.render('question');
+    res.render('question', { user: req.user });
 });
 
 router.post('/question', (req, res) => {

@@ -1,15 +1,27 @@
 const express = require('express');
-const router = express.Router();
-const User = require('../../models/User');
-const bcrypt = require('bcrypt');
+const bcrypt  = require('bcrypt');
+const router  = express.Router();
+const User    = require('../../models/User');
 
 router.get('/users', (req, res) => {
-  res.status(200).json({ msg: 'implementar' });
+  User.find().exec((err, users) => {
+    if (err) throw err;
+    res.status(200).json(users);
+  });
 });
 
 router.get('/user/:id', (req, res) => {
+  User.findById(req.params.id).exec((err, user) => {
+    if (err) throw err;
+    res.status(200).json(user);
+  });
+});
 
-  res.status(200).json({ msg: 'implementar' });
+router.delete('/user/:id', (req, res) => {
+  User.findByIdAndRemove(req.params.id).exec(err => {
+    if (err) throw err;
+    res.status(200).json({ message: 'user deleted' });
+  });
 });
 
 router.post('/user', (req, res) => {

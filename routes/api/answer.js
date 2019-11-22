@@ -1,12 +1,26 @@
 const express = require('express');
-const router = express.Router();
+const Answer  = require('../../models/Answer');
+const router  = express.Router();
 
 router.get('/answers', (req, res) => {
-  res.status(200).json({ msg: 'implementar' });
+  Answer.find().exec((err, answers) => {
+    if (err) throw err;
+    res.status(200).json(answers);
+  });
 });
 
 router.get('/answer/:id', (req, res) => {
-  res.status(200).json({ msg: 'implementar' });
+  Answer.findById(req.params.id).exec((err, answer) => {
+    if (err) throw err;
+    res.status(200).json(answer);
+  });
+});
+
+router.delete('/answer/:id', (req, res) => {
+  Answer.findByIdAndRemove(req.params.id).exec(err => {
+    if (err) throw err;
+    res.status(200).json({ message: 'answer deleted' });
+  });
 });
 
 router.post('/answer', (req, res) => {

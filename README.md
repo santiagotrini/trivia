@@ -18,13 +18,13 @@ Ejercicio para Proyecto Informatico I.
 - [x] Crear un modelo para las preguntas.
 - [x] Crear una vista para el home (`index.pug`). Usar una lista ordenada para las preguntas.
 - [x] Escribir una ruta para la home page que haga una query a la base de datos y lleve las preguntas a la vista.
-- [ ] Crear un modelo para las respuestas.
-- [ ] Modificar el modelo de las preguntas para que pueda hacer referencia a las respuestas.
-- [ ] Modificar el formulario de nueva pregunta para poder cargar las respuestas tambien.
-- [ ] Mostrar las preguntas con sus respuestas.
-- [ ] Mostrar cuando el jugador acierta o falla en una pregunta.
-- [ ] Agregar un formulario de registro para nuevos usuarios.
-- [ ] Agregar un formulario de _login_.
-- [ ] Agregar autenticacion usando PassportJS con usuario y contraseña.
+- [x] Crear un modelo para las respuestas.
+- [x] Modificar el modelo de las preguntas para que pueda hacer referencia a las respuestas.
+- [x] Modificar el formulario de nueva pregunta para poder cargar las respuestas tambien.
+- [x] Mostrar las preguntas con sus respuestas.
+- [x] Mostrar cuando el jugador acierta o falla en una pregunta.
+- [x] Agregar un formulario de registro para nuevos usuarios.
+- [x] Agregar un formulario de _login_.
+- [x] Agregar autenticacion usando PassportJS con usuario y contraseña.
 - [ ] Mantener un historial de preguntas acertadas y falladas por cada usuario.
 - [ ] Mostrar 10 preguntas al azar de la base de datos no respondidas al logearse un usuario, o mejor aun, al tocar un botón que diga jugar o algo por el estilo.
