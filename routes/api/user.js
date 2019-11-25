@@ -10,6 +10,18 @@ router.get('/users', (req, res) => {
   });
 });
 
+router.patch('/user/:id', (req, res) => {
+  User.findById(req.params.id).exec((err, user) => {
+    if (err) throw err;
+    user.answered.push(req.body.question);
+    user.correctAnswers = user.correctAnswers + req.body.isRight;
+    user.save((err, user) => {
+      if (err) throw err;
+      res.status(200).json(user);
+    });
+  });
+});
+
 router.get('/user/:id', (req, res) => {
   User.findById(req.params.id).exec((err, user) => {
     if (err) throw err;

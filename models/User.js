@@ -7,7 +7,8 @@ const UserSchema = new mongoose.Schema({
   email: String,
   firstName: String,
   lastName: String,
-  role: { type: String, default: 'user' }
+  answered: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Question' }],
+  correctAnswers: { type: Number, default: 0 }
 });
 
 const User = mongoose.model('User', UserSchema);

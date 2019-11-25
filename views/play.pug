@@ -11,7 +11,9 @@ block content
           onclick='check(this)' 
           value=answer.isRight ? 'true' : 'false'
         )= answer.title
-    h3#msg.cover-heading &nbsp    
+    h3#msg.cover-heading &nbsp
+    p#user(hidden)= user.id
+    p#question(hidden)= question.id    
   script(src='js/check.js')
     
           

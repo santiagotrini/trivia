@@ -7,6 +7,15 @@ const User = require('../models/User');
 const Question = require('../models/Question');
 const Answer = require('../models/Answer');
 
+// testeando cosas
+
+// ruta para perfil
+router.get('/profile',
+  require('connect-ensure-login').ensureLoggedIn('/unauthorized'),
+  (req, res) => {
+    res.render('profile', { user: req.user });
+});
+
 // ruta para logearse
 router.post('/login',
   passport.authenticate('local', { failureRedirect: '/' }),

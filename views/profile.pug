@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  main.inner.cover(role='main')
+    h1.cover-heading Perfil de #{user.username}
+    h3.mt-5 Nombre: #{user.firstName}
+    h3 Apellido: #{user.lastName}
+    h3 Email: #{user.email}
+    h3 Preguntas respondidas: #{user.answered.length}
+    h3 Respuestas correctas: #{user.correctAnswers}
