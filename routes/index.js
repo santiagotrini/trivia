@@ -7,7 +7,19 @@ const User = require('../models/User');
 const Question = require('../models/Question');
 const Answer = require('../models/Answer');
 
-// testeando cosas
+// ruta para jugar
+router.get('/play',
+  require('connect-ensure-login').ensureLoggedIn('/unauthorized'),
+  (req, res) => {
+    Question
+      .find({_id: { $nin: req.user.answered } })
+      .populate('answers')
+      .exec((err, questions) => {
+        if (err) throw err;
+        const random = Math.floor(Math.random() * questions.length);
+        res.render('play', { user: req.user, question: questions[random] });
+      });
+});
 
 // ruta para perfil
 router.get('/profile',
@@ -40,7 +52,6 @@ router.post('/register', (req, res) => {
     lastName: req.body.lastName,
     email: req.body.email
   });
-  console.log(user) // debug
   bcrypt.genSalt(10, (err, salt) => {
     bcrypt.hash(user.password, salt, (err, hash) => {
       if (err) throw err;
@@ -55,16 +66,6 @@ router.post('/register', (req, res) => {
 
 router.get('/unauthorized', (req, res) => {
   res.render('unauthorized');
-});
-
-router.get('/play',
-  require('connect-ensure-login').ensureLoggedIn('/unauthorized'),
-  (req, res) => {
-    Question.find().populate('answers').exec((err, questions) => {
-      if (err) throw err;
-      const random = Math.floor(Math.random() * questions.length);
-      res.render('play', { question: questions[random], user: req.user });
-    });
 });
 
 router.get('/question',

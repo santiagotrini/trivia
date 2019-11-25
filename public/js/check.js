@@ -1,9 +1,6 @@
 function check(e) {
   const questionId = document.getElementById('question').innerHTML;
   const userId = document.getElementById('user').innerHTML;
-  console.log(questionId); // debug
-  console.log(userId); // debug
-  console.log(e.id); // debug
   const msg = document.getElementById('msg');
   let isRight = 0;
   if (e.value == 'true') {
@@ -29,7 +26,7 @@ function check(e) {
   fetch(url, options)
     .then(res => res.json())
     .then(json => {
-      console.log(json); // debug
+      // nada
     });
 
   // proxima pregunta

@@ -2,18 +2,21 @@ extends layout
 
 block content
   main.inner.cover(role='main')
-    h1.cover-heading.mb-5= question.title
-    each answer in question.answers
-      div.w-50.form-group.mx-auto.mt-3
-        button(
-          class=' btn btn-lg btn-secondary btn-block'
-          id=answer._id 
-          onclick='check(this)' 
-          value=answer.isRight ? 'true' : 'false'
-        )= answer.title
-    h3#msg.cover-heading &nbsp
-    p#user(hidden)= user.id
-    p#question(hidden)= question.id    
+    if (question)
+      h1.cover-heading.mb-5= question.title
+      each answer in question.answers
+        div.w-50.form-group.mx-auto.mt-3
+          button(
+            class=' btn btn-lg btn-secondary btn-block'
+            id=answer._id 
+            onclick='check(this)' 
+            value=answer.isRight ? 'true' : 'false'
+          )= answer.title
+      h3#msg.cover-heading &nbsp
+      p#user(hidden)= user.id
+      p#question(hidden)= question.id
+    if (!question)
+      h1.cover-heading.mb-5 No hay más preguntas sin responder      
   script(src='js/check.js')
     
           
