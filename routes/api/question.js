@@ -13,6 +13,13 @@ router.get('/question/:id', (req, res) => {
   res.status(200).json({ msg: 'implementar' });
 });
 
+router.delete('/question/:id', (req, res) => {
+  Question.findByIdAndRemove(req.params.id).exec(err => {
+    if (err) throw err;
+    res.status(200).json({ msg: 'Question deleted' });
+  });
+});
+
 router.post('/question', (req, res) => {
   const question = new Question({
     _id: new mongoose.Types.ObjectId(),
